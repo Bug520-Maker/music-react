@@ -1,11 +1,11 @@
-import React,{useState} from 'react';
-export default function Hooks()
-{
-    const [state,setState]=useState();
-    return (
-        <div>
-            213
-        </div>
-    )
-}
+import React, {PureComponent} from 'react';
+class App extends PureComponent {
+    render() {
+        return (
+            <div>
 
+            </div>
+        );
+    }
+}
+export default App;
