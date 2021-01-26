@@ -16,4 +16,4 @@ const app=memo(function()
     </BrowserRouter>
   )
 })
-export default app
+export default app;
