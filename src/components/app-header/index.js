@@ -3,31 +3,40 @@ import {NavLink} from "react-router-dom"
 /*导入css文件*/
 import {HeaderWrapper,
         HeaderContent,
-        ContentRight
+        ContentRight,
 } from './style.js'
+
 import backgroundImgUrl from "../../assets/img/topbar.png";
+
+import {navList} from '@/common/nav-list.js';
 
 const GBAppHeader = memo(function() {
   return (
-    <HeaderWrapper >
-      <HeaderContent className="header-wrapper" backgroundUrl={backgroundImgUrl} >
-        <a href="/" className="logo"> </a>
-        <NavLink to="/">发现音乐</NavLink>
-        <NavLink to="/myMusic">我的音乐</NavLink>
-        <NavLink to="/friend">朋友</NavLink>
-        <NavLink to="/market">商城</NavLink>
-        <NavLink to="/artist">音乐人</NavLink>
-        <NavLink to="/downloadClient">下载客户端</NavLink>
-        <ContentRight>
-           <div className="search-outer">
-              <input type="text" placeholder="音乐/视频/电台/用户" className="search-input" />
-           </div>
-           <button className="creator">创作者中心</button>
-           <div className="login">登录</div>
-        </ContentRight>
-      </HeaderContent>
-      <div className="divider"></div>
-    </HeaderWrapper>
+     <div>
+       <HeaderWrapper >
+         <HeaderContent className="header-wrapper" backgroundUrl={backgroundImgUrl} >
+           <a href="/" className="logo"> </a>
+           {
+             navList.map((item,index)=>{
+               return (<NavLink to={item.path} key={item.title}>
+                      {item.title}
+                       <i className="nav-index"></i>
+                      </NavLink>)
+             })
+           }
+           <ContentRight>
+              <div className="search-outer">
+                  <i className="search-icon"></i>
+                 <input type="text" placeholder="音乐/视频/电台/用户" className="search-input" />
+              </div>
+              <button className="creator">创作者中心</button>
+              <div className="login">登录</div>
+           </ContentRight>
+         </HeaderContent>
+         {/*红色分界线*/}
+         <div className="divider"></div>
+       </HeaderWrapper>
+     </div>
   )
 })
 export default GBAppHeader

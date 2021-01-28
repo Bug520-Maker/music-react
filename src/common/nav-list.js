@@ -1,0 +1,53 @@
+export const navList=[
+  {
+    path:'/findMusic',
+    title:'发现音乐'
+  },
+  {
+    path:'/myMusic',
+    title:'我的音乐'
+  },
+  {
+    path:'/friend',
+    title:'朋友'
+  },
+  {
+    path:'/market',
+    title:'商城'
+  },
+  {
+    path:'/artist',
+    title:'音乐人'
+  },
+  {
+    path:'/downloadClient',
+    title:'下载客户端'
+  },
+];
+
+export const navMenu=[
+  {
+    path:'/findMusic/recommend',
+    title:'推荐'
+  },
+  {
+    path:'/findMusic/rank',
+    title:'排行榜'
+  },
+  {
+    path:'/findMusic/playList',
+    title:'歌单'
+  },
+  {
+    path:'/findMusic/djRadio',
+    title:'主播电台'
+  },
+  {
+    path:'/findMusic/recArtist',
+    title:'歌手'
+  },
+  {
+    path:'/findMusic/newAlbum',
+    title:'新碟上架'
+  },
+]
