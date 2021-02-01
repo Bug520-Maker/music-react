@@ -1,5 +1,5 @@
 /*设置推荐，排行榜，歌单样式*/
-import styled from 'styled-components'
+import styled from 'styled-components';
 export const NavMenu=styled.div`
     background-color:pink;
    div{

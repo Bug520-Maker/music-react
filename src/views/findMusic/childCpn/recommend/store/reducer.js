@@ -1,14 +1,14 @@
 import {CHANGE_BANNERS} from './constants.js';
-
-const defaultBanners={
+import {Map} from 'immutable';
+const defaultBanners=Map({
   banners:[]
-}
+})
 function reducer(state=defaultBanners,action)
 {
   switch(action.type)
   {
     case CHANGE_BANNERS:
-      return {...state,banners:action.banners};
+      return state.set('banners',action.banners);
     default:
       return state
   }

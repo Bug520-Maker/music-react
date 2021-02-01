@@ -1,5 +1,7 @@
 import React,{memo} from 'react';
 
+import 'antd/dist/antd.css';
+
 import {renderRoutes} from 'react-router-config';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from 'react-redux';
