@@ -1,4 +1,5 @@
 @import '~normalize.css';
+@import '../font/music-react/iconfont.css';
 *{
   margin:0px;
   padding:0px;

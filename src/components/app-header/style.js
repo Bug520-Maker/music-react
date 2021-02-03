@@ -9,7 +9,7 @@ export const HeaderWrapper=styled.div`
 /*头部导航条居中内容*/
 export const HeaderContent=styled.div`
   display:flex;
-  justify-content:space-betweent;
+  justify-content:space-between;
   height:100%;
   a{
     color:#cccccc;
@@ -55,13 +55,12 @@ export const ContentRight=styled.div`
    display:flex;
    padding:0 5px;
    margin:0 0 0 60px;
-
    .search-outer{
-      padding:6px 5px 6px 0 ;
+      padding:3px 15px 6px 0 ;
       background:#fff;
       margin:18px 0 0 0;
       border-radius:18px;
-      height:20px;
+      height:30px;
       position:relative;
       i.search-icon
       {
@@ -71,7 +70,7 @@ export const ContentRight=styled.div`
         background-image:url(${searchLogo});
         background-position:0 -99px;
         position:absolute;
-        top:6%;
+        top:5%;
 
       }
    }

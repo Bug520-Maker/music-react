@@ -1,0 +1,58 @@
+{
+  "id": "2133593",
+  "name": "yun",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "9097154",
+      "name": "耳机",
+      "font_class": "ziyuan",
+      "unicode": "e64e",
+      "unicode_decimal": 58958
+    },
+    {
+      "icon_id": "11283436",
+      "name": "收藏夹",
+      "font_class": "shoucangjia",
+      "unicode": "e69a",
+      "unicode_decimal": 59034
+    },
+    {
+      "icon_id": "11367835",
+      "name": "larkcloud_play",
+      "font_class": "ic_play",
+      "unicode": "e787",
+      "unicode_decimal": 59271
+    },
+    {
+      "icon_id": "11792815",
+      "name": "Arrows Down",
+      "font_class": "ArrowsRight",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "12012778",
+      "name": "down-arrows",
+      "font_class": "arrowsjiantou-",
+      "unicode": "e667",
+      "unicode_decimal": 58983
+    },
+    {
+      "icon_id": "17128384",
+      "name": "down-arrows",
+      "font_class": "arrows-up",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "9709068",
+      "name": "play",
+      "font_class": "play",
+      "unicode": "e996",
+      "unicode_decimal": 59798
+    }
+  ]
+}

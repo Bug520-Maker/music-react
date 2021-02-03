@@ -7,13 +7,13 @@ export const NavMenu=styled.div`
       display:flex;
       padding:0 0 0 395px;
       .nav-router{
-        padding:8px 20px;
+        padding:6px 20px;
         div{
           font-size:12px;
           color:#ffffff;
           background-color:#9b0909;
-          padding:3px 12px;
-          border-radius:15px;
+          padding:1px 12px;
+          border-radius:12px;
         }
       }
    }

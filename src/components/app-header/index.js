@@ -20,13 +20,13 @@ const GBAppHeader = memo(function() {
              navList.map((item,index)=>{
                return (<NavLink to={item.path} key={item.title}>
                       {item.title}
-                       <i className="nav-index"></i>
+                       <i className="nav-index"> </i>
                       </NavLink>)
              })
            }
            <ContentRight>
               <div className="search-outer">
-                  <i className="search-icon"></i>
+                  <i className="search-icon"> </i>
                  <input type="text" placeholder="音乐/视频/电台/用户" className="search-input" />
               </div>
               <button className="creator">创作者中心</button>
@@ -34,7 +34,7 @@ const GBAppHeader = memo(function() {
            </ContentRight>
          </HeaderContent>
          {/*红色分界线*/}
-         <div className="divider"></div>
+         <div className="divider"> </div>
        </HeaderWrapper>
      </div>
   )

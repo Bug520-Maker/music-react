@@ -1,7 +1,12 @@
-import {CHANGE_BANNERS} from './constants.js';
 import {Map} from 'immutable';
+import {
+  CHANGE_BANNERS,
+  CHANGE_HOT_RECOMMENDS
+} from './constants.js';
+
 const defaultBanners=Map({
-  banners:[]
+  banners:[],
+  hotRecommends:[]
 })
 function reducer(state=defaultBanners,action)
 {
@@ -9,6 +14,8 @@ function reducer(state=defaultBanners,action)
   {
     case CHANGE_BANNERS:
       return state.set('banners',action.banners);
+    case CHANGE_HOT_RECOMMENDS:
+      return state.set('hotRecommends',action.hotRecommends)
     default:
       return state
   }
