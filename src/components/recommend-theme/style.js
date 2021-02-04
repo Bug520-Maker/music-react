@@ -2,7 +2,12 @@ import styled from 'styled-components';
 import albumUrl from '../../assets/img/index.png'
 export const RecommendTheme=styled.div`
   display: flex;
+  justify-content: space-between;
   border-bottom: 3px solid #c10d0c;
+  div:nth-child(1)
+  {
+    display: flex;
+  }
   div.icon{
     width: 35px;
     height: 35px;
@@ -28,8 +33,7 @@ export const RecommendTheme=styled.div`
     background-position: 27px -227px;
     font-size: 12px;
     color: #666666;
-    width: 40px;
-    margin:0 0 0 270px;
+    width: 50px;
     line-height: 35px;
   }
 `
