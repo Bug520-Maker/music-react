@@ -1,5 +1,5 @@
 import React,{memo,useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {shallowEqual, useDispatch, useSelector} from "react-redux";
 
 import RecTheme from "../../../../../../components/recommend-theme";
 import SongCover from '../../../../../../components/songs-cover/index';
@@ -10,7 +10,7 @@ import {PlayLists} from './style'
 export default memo(function HotRecommend(){
     const {hotRecommends}=useSelector(state=>({
         hotRecommends:state.getIn(['recommendReducer','hotRecommends'])
-    }))
+    }),shallowEqual)
     const dispatch=useDispatch();
     useEffect(()=>{
         dispatch(getHotRecommendsAction(8))

@@ -5,7 +5,7 @@ import {formatPC} from "../../utils/data-format";
 
 export default memo(function SongsCover(props){
     const {playList}=props;
-    console.log(playList)
+    //console.log(playList)
     return (
         <HotRec>
             <div className="img-container">

@@ -1,6 +1,6 @@
 export function resetImgSize(imgUrl,size)
 {
-    return `${imgUrl}?param=${size}y${size}`
+    return `${imgUrl}?param=${size}y${size}&quality=100`
 }
 export function formatPC(count)
 {

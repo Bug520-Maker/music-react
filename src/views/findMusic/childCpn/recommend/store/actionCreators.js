@@ -1,7 +1,8 @@
-import {getBanners, getHotRecommends} from '../../../../../network/recommend/recommend.js';
+import {getBanners, getHotRecommends, getNewAlbums} from '../../../../../network/recommend/recommend.js';
 import {
   CHANGE_BANNERS,
-  CHANGE_HOT_RECOMMENDS
+  CHANGE_HOT_RECOMMENDS,
+    CHANGE_HOT_NEW_ALBUMS
 } from './constants.js';
 export function changeBanners(res)
 {
@@ -17,6 +18,14 @@ export function changeHotRecommends(res)
     hotRecommends:res
   }
 }
+export function changeHotNewAlbums(res)
+{
+  return {
+    type:CHANGE_HOT_NEW_ALBUMS,
+    newAlbums:res
+  }
+}
+
 export function getBannersAction(dispatch,getState)
 {
   return (dispatch)=>{
@@ -33,6 +42,16 @@ export function getHotRecommendsAction(limit)
     getHotRecommends(limit).then(data=>{
       //console.log(data.result)
       dispatch(changeHotRecommends(data.result))
+    })
+  }
+}
+/*获取热门推荐中的新碟上架*/
+export function getHotNewAlbumAction(limit)
+{
+  return dispatch=>{
+    getNewAlbums(limit).then(data=>{
+      //console.log(data.albums);
+      dispatch(changeHotNewAlbums(data.albums))
     })
   }
 }
