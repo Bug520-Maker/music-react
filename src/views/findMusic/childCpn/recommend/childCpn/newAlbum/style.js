@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import arrow from '../../../../../../assets/img/index.png';
-import cover from '../../../../../../assets/img/coverall.png'
 export const NewAlbums=styled.div`
   width: 687px;
   height:186px;
-  margin: 20px 0 0 0;
+  margin: 20px 0 30px 0;
   border: 1px solid #d3d3d3;
   display: flex;
   align-items: center;
@@ -12,21 +11,6 @@ export const NewAlbums=styled.div`
   .albums-outer{
     display: flex!important;
     justify-content: space-between;
-    .album-item{
-      width: 118px;
-      height: 100px;
-      position:relative;
-     img{
-       width:100px;
-     }
-      .cover{
-        position: absolute;
-        width: 118px;
-        height: 100px;
-        background-image: url(${cover});
-        background-position: 0 -570px;
-      }
-    }
   }
   .left-icon
   {

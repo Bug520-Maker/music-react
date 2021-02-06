@@ -1,8 +1,17 @@
-import {getBanners, getHotRecommends, getNewAlbums} from '../../../../../network/recommend/recommend.js';
+import {
+  getBanners,
+  getHotRecommends,
+  getNewAlbums,
+  getTopList,
+  topListMsg
+} from '../../../../../network/recommend/recommend.js';
 import {
   CHANGE_BANNERS,
   CHANGE_HOT_RECOMMENDS,
-    CHANGE_HOT_NEW_ALBUMS
+  CHANGE_HOT_NEW_ALBUMS,
+  CHANGE_UP_RANKING,
+  CHANGE_NEW_RANKING,
+  CHANGE_ORIGINAL_RANKING
 } from './constants.js';
 export function changeBanners(res)
 {
@@ -25,7 +34,30 @@ export function changeHotNewAlbums(res)
     newAlbums:res
   }
 }
-
+/*飙升榜*/
+export function changeUpLink(res)
+{
+  return {
+    type:CHANGE_UP_RANKING,
+    upRanking:res
+  }
+}
+/*新歌榜*/
+export function changeNewLink(res)
+{
+  return {
+    type:CHANGE_NEW_RANKING,
+    newRanking:res
+  }
+}
+/*原创榜*/
+export function changeOriginalLink(res)
+{
+  return {
+    type:CHANGE_ORIGINAL_RANKING,
+    originalRanking:res
+  }
+}
 export function getBannersAction(dispatch,getState)
 {
   return (dispatch)=>{
@@ -52,6 +84,38 @@ export function getHotNewAlbumAction(limit)
     getNewAlbums(limit).then(data=>{
       //console.log(data.albums);
       dispatch(changeHotNewAlbums(data.albums))
+    })
+  }
+}
+/*获取所有榜单*/
+export function getTopListAction()
+{
+  return dispatch=>{
+    getTopList().then(data=>{
+      //console.log(data.list);
+      const newTopList=data.list.filter((item,index)=>{
+        return item.name==='飙升榜'||item.name==='新歌榜'||item.name==='原创榜'
+      })
+      for(let item of newTopList)
+      {
+        switch(item.name)
+        {
+          case '飙升榜':
+            topListMsg(item.id).then(data=>{
+              dispatch(changeUpLink(data.playlist))
+          });break;
+          case '新歌榜':
+            topListMsg(item.id).then(data=>{
+              dispatch(changeNewLink(data.playlist))
+            });break;
+          case '原创榜':
+            topListMsg(item.id).then(data=>{
+              dispatch(changeOriginalLink(data.playlist))
+            });break;
+          default:
+
+        }
+      }
     })
   }
 }

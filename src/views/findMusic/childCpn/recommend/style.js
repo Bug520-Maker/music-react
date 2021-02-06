@@ -2,7 +2,7 @@ import styled from 'styled-components';
 export const Content=styled.div`
   width:979px;
   border: 1px solid #d3d3d3;
-  height: 1425px;
+  height: 1365px;
   margin: 0 auto;
 `
 export const LeftContent=styled.div`

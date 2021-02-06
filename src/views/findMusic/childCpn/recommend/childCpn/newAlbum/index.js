@@ -7,6 +7,7 @@ import {getHotNewAlbumAction} from "../../store/actionCreators";
 import {resetImgSize} from "../../../../../../utils/data-format";
 
 import RecTheme from "../../../../../../components/recommend-theme";
+import AlbumCover from '../../../../../../components/album-cover/index';
 import {NewAlbums,Swiper} from './style';
 export default memo(function NewAlbum(){
     const {newAlbums}=useSelector(state=>({
@@ -17,7 +18,7 @@ export default memo(function NewAlbum(){
         dispatch(getHotNewAlbumAction(10))
     },[dispatch])
     const swiperRef=useRef();
-    console.log(newAlbums)
+    //console.log(newAlbums)
     return (
         <div>
             <RecTheme title='新碟上架'/>
@@ -32,9 +33,8 @@ export default memo(function NewAlbum(){
                                         {
                                             newAlbums.slice(item*5,(item+1)*5).map((iten)=>{
                                                 return (
-                                                    <div key={iten.id} className='album-item'>
-                                                        <div className="cover"></div>
-                                                        <img src={resetImgSize(iten.blurPicUrl,100)} alt={iten.name}/>
+                                                    <div key={iten.id}>
+                                                        <AlbumCover albumInfo={iten} height={100} width={118} bgc={-570}/>
                                                     </div>
                                                 )
                                             })
