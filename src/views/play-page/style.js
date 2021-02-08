@@ -9,6 +9,7 @@ export const PlayWrapper=styled.div`
   width: 100%;
   top: 100%;
   transform: translateY(-100%);
+  opacity: 0.95;
 `
 export const Content=styled.div`
   width: 980px;
@@ -101,9 +102,11 @@ export const Progress=styled.div`
       height: 9px;
       background-image: url(${statbar});
       background-position:right -30px;
+      border-radius: 18px;
     }
     .ant-slider-step{/*设置滑块整体样式*/
       height: 9px;
+      
     }
     .ant-slider-track{/*滑块左部样式*/
       background-image: url(${statbar});
@@ -128,6 +131,43 @@ export const Progress=styled.div`
   }
 `
 export const RightControl=styled.div`
-  background-color: #9b9b9b;
+  display: flex;
   flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  & >div{
+    display: flex;
+  }
+  .collect{
+    background-image: url(${playbar});
+    background-position: -88px -163px;
+    width: 25px;
+    height: 25px;
+  }
+   .share{
+     background-position: -114px -163px;
+     background-image: url(${playbar});
+     width: 25px;
+     height: 25px;
+     margin: 0 0 0 10px;
+   }
+  .vol{
+    background-position: -2px -248px;
+    background-image: url(${playbar});
+    width: 25px;
+    height: 25px;
+  }
+  .loop{
+    background-position: -3px -344px;
+    background-image: url(${playbar});
+    width: 25px;
+    height: 25px;
+    margin: 0 5px;
+  }
+  .list{
+    background-position: -42px -68px;
+    background-image: url(${playbar});
+    width: 59px;
+    height: 25px;
+  }
 `
