@@ -4,20 +4,20 @@ import {shallowEqual, useDispatch, useSelector} from "react-redux";
 import { Carousel } from 'antd';
 
 import {getHotNewAlbumAction} from "../../store/actionCreators";
-import {resetImgSize} from "../../../../../../utils/data-format";
 
 import RecTheme from "../../../../../../components/recommend-theme";
 import AlbumCover from '../../../../../../components/album-cover/index';
 import {NewAlbums,Swiper} from './style';
 export default memo(function NewAlbum(){
-    const {newAlbums}=useSelector(state=>({
-        newAlbums:state.get('recommendReducer').get('newAlbums')
-    }),shallowEqual);
+
     const dispatch=useDispatch();
     useEffect(()=>{
         dispatch(getHotNewAlbumAction(10))
     },[dispatch])
     const swiperRef=useRef();
+    const {newAlbums}=useSelector(state=>({
+        newAlbums:state.get('recommendReducer').get('newAlbums')
+    }),shallowEqual);
     //console.log(newAlbums)
     return (
         <div>
@@ -31,7 +31,7 @@ export default memo(function NewAlbum(){
                                 return (
                                     <div key={item} className="albums-outer">
                                         {
-                                            newAlbums.slice(item*5,(item+1)*5).map((iten)=>{
+                                            newAlbums&&newAlbums.slice(item*5,(item+1)*5).map((iten)=>{
                                                 return (
                                                     <div key={iten.id}>
                                                         <AlbumCover albumInfo={iten} height={100} width={118} bgc={-570}/>

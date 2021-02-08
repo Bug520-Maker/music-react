@@ -8,20 +8,32 @@ import {getTopListAction} from "../../store/actionCreators";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 
 export default memo(function TopList(){
-    const {upRanking}=useSelector(state=>({
-        upRanking:state.getIn(['recommendReducer','upRanking'])
+    const {upRanking}=useSelector(state=>{
+        return {upRanking:state.getIn(['recommendReducer','upRanking'])}
+    },shallowEqual);
+    const {newRanking}=useSelector(state=>({
+        newRanking:state.getIn(['recommendReducer','newRanking'])
+    }),shallowEqual)
+    const {originalRanking}=useSelector(state=>({
+        originalRanking:state.getIn(['recommendReducer','originalRanking'])
     }),shallowEqual)
     const dispatch=useDispatch();
     useEffect(()=>{
         dispatch(getTopListAction())
     },[dispatch]);
-    console.log(upRanking)
+   // console.log(upRanking)
     return (
         <div>
             <RecTheme title="榜单"/>
             <TopListWrapper className="clearfix">
                 <div className="up-rank">
-                    <TopListCpn info={upRanking} className="list"/>
+                    <TopListCpn info={upRanking}/>
+                </div>
+                <div className="new-rank">
+                    <TopListCpn info={newRanking}/>
+                </div>
+                <div className="origin-rank">
+                    <TopListCpn info={originalRanking}/>
                 </div>
             </TopListWrapper>
         </div>

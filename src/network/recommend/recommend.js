@@ -21,8 +21,8 @@ export function getNewAlbums(limit)
     url:'/top/album',
     params:{
       limit,
-      type:'hot',
-      area:'ZH',
+      area:'ALL',
+      type:'new'
     }
   })
 }
@@ -44,12 +44,13 @@ export function topListMsg(id)
   })
 }
 /*获取歌曲详情*/
-export function songMsg([...id])
+export function songMsg(id)
 {
+  const ids=id.join(",")
   return request({
     url:'/song/detail',
     params:{
-      ids:[...id]
+      ids
     }
   })
 }

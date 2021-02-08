@@ -2,7 +2,7 @@ import {
   getBanners,
   getHotRecommends,
   getNewAlbums,
-  getTopList,
+  getTopList, songMsg,
   topListMsg
 } from '../../../../../network/recommend/recommend.js';
 import {
@@ -11,7 +11,8 @@ import {
   CHANGE_HOT_NEW_ALBUMS,
   CHANGE_UP_RANKING,
   CHANGE_NEW_RANKING,
-  CHANGE_ORIGINAL_RANKING
+  CHANGE_ORIGINAL_RANKING,
+  CHANGE_RANKING_SONGS
 } from './constants.js';
 export function changeBanners(res)
 {
@@ -58,6 +59,14 @@ export function changeOriginalLink(res)
     originalRanking:res
   }
 }
+/*榜单下歌曲*/
+export function changeRankSongs(res)
+{
+  return {
+    type:CHANGE_RANKING_SONGS,
+    rankingSongs:res
+  }
+}
 export function getBannersAction(dispatch,getState)
 {
   return (dispatch)=>{
@@ -82,7 +91,7 @@ export function getHotNewAlbumAction(limit)
 {
   return dispatch=>{
     getNewAlbums(limit).then(data=>{
-      //console.log(data.albums);
+     /* console.log(data);*/
       dispatch(changeHotNewAlbums(data.albums))
     })
   }
@@ -102,20 +111,33 @@ export function getTopListAction()
         {
           case '飙升榜':
             topListMsg(item.id).then(data=>{
+              //console.log(data)
               dispatch(changeUpLink(data.playlist))
           });break;
           case '新歌榜':
             topListMsg(item.id).then(data=>{
+              //console.log(data)
               dispatch(changeNewLink(data.playlist))
             });break;
           case '原创榜':
             topListMsg(item.id).then(data=>{
+              //console.log(data)
               dispatch(changeOriginalLink(data.playlist))
             });break;
           default:
 
         }
       }
+    })
+  }
+}
+/*获取歌曲详情*/
+export function getSongMsgAction(id)
+{
+  return dispatch=>{
+    songMsg(id).then(data=>{
+      //console.log(data.songs);
+      dispatch(changeRankSongs(data.songs));
     })
   }
 }

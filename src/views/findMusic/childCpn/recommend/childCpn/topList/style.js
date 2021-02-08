@@ -5,7 +5,14 @@ export const TopListWrapper=styled.div`
   margin: 20px 0 0 0;
   width:689px;
   height:472px;
+  display: flex;
   .up-rank{
-    margin: 20px;
+    margin: 20px 0 0 20px;
+  }
+  .new-rank{
+    margin: 20px 0 0 20px;
+  }
+  .origin-rank{
+    margin:20px 0 0 20px;
   }
 `

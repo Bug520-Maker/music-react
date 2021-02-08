@@ -46,5 +46,22 @@ export const Header=styled.div`
   }
 `
 export const BodyList=styled.div`
-  
+  ul{
+    font-size: 12px;
+    margin: 20px 0 0 0;
+    li{
+      width:210px;
+      height: 32px;
+      span{
+        font-size: 16px;
+        display: inline-block;
+        width: 35px;
+        text-align: center;
+      }
+      :nth-of-type(-n+3) span
+      {
+        color: #cb0d0c;
+      }
+    }
+  }
 `
