@@ -13,7 +13,7 @@ import playList from '../views/findMusic/childCpn/playList';
 import djRadio from '../views/findMusic/childCpn/djRadio';
 import recArtist from '../views/findMusic/childCpn/artist';
 import newAlbum from '../views/findMusic/childCpn/newAlbum';
-
+import playPage from '../views/play-bar/play-page/index';
 const routes =[
 {
   path:'/',
@@ -56,6 +56,10 @@ const routes =[
     {
       path:'/findMusic/newAlbum',
       component:newAlbum
+    },
+    {
+      path:'/findMusic/player',
+      component:playPage
     }
   ]
 },
@@ -78,6 +82,6 @@ const routes =[
   {
     path: '/downloadClient',
     component: downloadClient
-  }
+  },
 ]
 export default routes;

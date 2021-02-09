@@ -8,6 +8,7 @@ import {getTopListAction} from "../../store/actionCreators";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
 
 export default memo(function TopList(){
+    //redux-hook
     const {upRanking}=useSelector(state=>{
         return {upRanking:state.getIn(['recommendReducer','upRanking'])}
     },shallowEqual);
@@ -18,6 +19,7 @@ export default memo(function TopList(){
         originalRanking:state.getIn(['recommendReducer','originalRanking'])
     }),shallowEqual)
     const dispatch=useDispatch();
+    //other hook
     useEffect(()=>{
         dispatch(getTopListAction())
     },[dispatch]);

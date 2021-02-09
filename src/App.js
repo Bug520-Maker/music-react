@@ -9,7 +9,7 @@ import {Provider} from 'react-redux';
 import routes from "./router"
 import GBAppHeader from "./components/app-header/index.js";
 import GBAppFooter from "./components/app-footer/index.js";
-import PlayPage from "./views/play-page/index";
+import PlayPage from "./views/play-bar/index";
 import store from './store';
 const app=memo(function()
 {

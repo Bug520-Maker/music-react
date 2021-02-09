@@ -1,38 +1,29 @@
-import React,{memo,useEffect} from 'react';
-import {shallowEqual, useDispatch, useSelector} from "react-redux";
-
+import React,{memo,useEffect,useState} from 'react';
 import {Header,BodyList} from './style'
 import {resetImgSize} from "../../utils/data-format";
 
-import {getSongMsgAction} from "../../views/findMusic/childCpn/recommend/store/actionCreators";
-
+import {songMsg} from '../../network/recommend/recommend'
 
 export default memo(function TopListCpn(props){
-    //console.log(props.info,"我是props")
     const {info}=props;
-    const dispatch=useDispatch();
-    const {rankingSongs}=useSelector(state=>{
-        return {rankingSongs:state.getIn(['recommendReducer','rankingSongs'])}
-    },shallowEqual)
+    const [rankingSongs,setRankingSongs]=useState([]);
     useEffect(()=>{
-        //console.log("我是useEffect")
         if(info.trackIds!==undefined)
         {
-            //console.log(info.trackIds.slice(0,5))
             const ids=info.trackIds.slice(0,10).map((item,index)=>{
                 return item.id
             })
-            dispatch(getSongMsgAction(ids));
-            //console.log("47")
+            songMsg(ids).then(data=>{
+                setRankingSongs(data.songs);
+            })
         }
-    },[dispatch])
-
+    },[info.trackIds])
     return (
         <div >
             <Header>
                 <div className="img-container">
                     <div className='cover'>cover</div>
-                    <img src={resetImgSize(info.coverImgUrl,80)} />
+                    <img src={resetImgSize(info.coverImgUrl,80)} alt="暂无图片"/>
                 </div>
                 <div className="right-content">
                     <div className="rank-name">
@@ -51,7 +42,12 @@ export default memo(function TopListCpn(props){
                             return (
                                 <li key={item.id} className="text-overflow-single">
                                     <span>{index+1}</span>
-                                    {item.name}
+                                    <div className="song-name text-overflow-single">{item.name}</div>
+                                    <div className="control-btn">
+                                        <i className="play"></i>
+                                        <i className="add"></i>
+                                        <i className="subscribe"></i>
+                                    </div>
                                 </li>
                             )
                         })

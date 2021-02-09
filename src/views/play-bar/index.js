@@ -1,4 +1,5 @@
 import React,{memo,useEffect,useRef,useState,useCallback} from 'react';
+import {withRouter} from "react-router-dom";
 import { Slider} from 'antd';
 
 import {PlayWrapper,Content,ControlBtn,Progress,RightControl} from './style'
@@ -8,7 +9,8 @@ import {formatDate} from "../../utils/data-format";
 import {getPlaySong} from '../../utils/playMusic-util';
 import {getSongDetailAction} from "./store/actionCreator";
 import {useDispatch, useSelector} from "react-redux";
-export default memo(function PlayPage(){
+
+function PlayBar(props){
     //redux-hook
     const {currentSong}=useSelector(state=>({
         currentSong:state.getIn(['playPageReducer','currentSong'])
@@ -19,22 +21,26 @@ export default memo(function PlayPage(){
     const [currentTime,setCurrentTime]=useState(0);
     const [progress,setProgress]=useState(0);
     const [isChanging,setChange]=useState(false);
+    const [isPlay,setPlay]=useState(false);
     useEffect(()=>{
         dispatch(getSongDetailAction(167876))
     },[dispatch])
+    useEffect(()=>{
+        audioPlay.current.src=getPlaySong(167876);
+    },[])
     const audioPlay=useRef();
     //other
     const picUrl=currentSong.al&&currentSong.al.picUrl;
     const artistName=currentSong.ar&&currentSong.ar[0].name;
     const playMusic=()=>{
-        audioPlay.current.src=getPlaySong(167876);
-        audioPlay.current.play();
+        isPlay?audioPlay.current.pause():audioPlay.current.play();
+        setPlay(!isPlay);
         audioPlay.current.volume=0.05;
     }
     const getCurrentTime=(e)=>{
-        setCurrentTime(e.target.currentTime*1000);
         if(!isChanging)
         {
+            setCurrentTime(e.target.currentTime*1000);
             setProgress(currentTime/currentSong.dt*100);
         }
     }
@@ -50,16 +56,20 @@ export default memo(function PlayPage(){
         setCurrentTime(value/100*currentSong.dt)
         setChange(false);
     },[currentSong.dt])
+    //router
+    const playerRouter=()=> {
+        props.history.push('/findMusic/player')
+    }
     return (
         <PlayWrapper>
             <Content>
-                <ControlBtn>
+                <ControlBtn isPlay={isPlay}>
                     <div className='prev'>前一首</div>
                     <div className='play' onClick={e=>playMusic()}>暂停/播放</div>
                     <div className="next">下一首</div>
                 </ControlBtn>
                 <Progress className="clearfix">
-                    <div className="img-container">
+                    <div className="img-container" onClick={e=>playerRouter()}>
                         <div className="cover">歌曲封面</div>
                         <img src={resetImgSize(picUrl,35)} alt="暂无图片"/>
                     </div>
@@ -91,4 +101,5 @@ export default memo(function PlayPage(){
             </Content>
         </PlayWrapper>
     )
-})
+}
+export default withRouter(memo(PlayBar))

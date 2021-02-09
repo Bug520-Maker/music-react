@@ -7,6 +7,3 @@ export const CHANGE_UP_RANKING='changeUpRanking';
 export const CHANGE_NEW_RANKING='changeNewRanking';
 /*原创帮*/
 export const CHANGE_ORIGINAL_RANKING='changeOriginalRanking';
-
-/*榜单歌曲*/
-export const CHANGE_RANKING_SONGS='changeRankSongs';

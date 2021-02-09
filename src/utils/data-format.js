@@ -14,7 +14,7 @@ export function formatPC(count)
     }
 }
 /*格式化时间*/
-export function formatDate(date, fmt) {
+export function formatDate(date, fmt){
      date=new Date(date);
     if (/(y+)/.test(fmt)) {
         fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));

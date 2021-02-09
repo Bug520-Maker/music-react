@@ -18,7 +18,9 @@ export const Content=styled.div`
   margin: 7px auto 0;
   display: flex;
 `
-export const ControlBtn=styled.div`
+export const ControlBtn=styled.div.attrs({
+
+})`
   width: 137px;
  /* background-color: #42b983;*/
   height: 100%;
@@ -30,14 +32,17 @@ export const ControlBtn=styled.div`
    /* background-color: #fff;*/
     margin: 8px 8px 0 0;
   }
-  .play{
-   /* background-color: #0086b3;*/
+  .play {
+    /* background-color: #0086b3;*/
     width: 36px;
     height: 36px;
     text-indent: -9999px;
     margin: 4px 8px 0 0;
-    background-position: 0 -204px;
+    background-position: ${props=>{return props.isPlay ? '-0px -165px':'0 -204px'}};
     background-image: url(${playbar});
+    :hover{
+      background-position:${props=>{return props.isPlay ? '-40px -165px':'-40px -204px'}} ;
+    }
   }
   .prev{
     background-image: url(${playbar});

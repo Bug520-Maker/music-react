@@ -2,7 +2,7 @@ import {
   getBanners,
   getHotRecommends,
   getNewAlbums,
-  getTopList, songMsg,
+  getTopList,
   topListMsg
 } from '../../../../../network/recommend/recommend.js';
 import {
@@ -12,7 +12,6 @@ import {
   CHANGE_UP_RANKING,
   CHANGE_NEW_RANKING,
   CHANGE_ORIGINAL_RANKING,
-  CHANGE_RANKING_SONGS
 } from './constants.js';
 export function changeBanners(res)
 {
@@ -132,12 +131,12 @@ export function getTopListAction()
   }
 }
 /*获取歌曲详情*/
+/*
 export function getSongMsgAction(id)
 {
   return dispatch=>{
     songMsg(id).then(data=>{
-      //console.log(data.songs);
       dispatch(changeRankSongs(data.songs));
     })
   }
-}
+}*/

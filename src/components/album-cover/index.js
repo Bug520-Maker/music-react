@@ -9,7 +9,7 @@ export default memo(function AlbumCover(props){
             <div className="album-img" title={albumInfo.name}>
                 <div className="play"></div>
                 <div className="cover"></div>
-                <img src={resetImgSize(albumInfo.picUrl,height)} />
+                <img src={resetImgSize(albumInfo.picUrl,height)} alt="暂无图片"/>
             </div>
             <div className="album-state text-overflow-single">
                 {albumInfo.name}
