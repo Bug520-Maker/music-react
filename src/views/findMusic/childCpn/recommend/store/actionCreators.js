@@ -58,14 +58,7 @@ export function changeOriginalLink(res)
     originalRanking:res
   }
 }
-/*榜单下歌曲*/
-export function changeRankSongs(res)
-{
-  return {
-    type:CHANGE_RANKING_SONGS,
-    rankingSongs:res
-  }
-}
+
 export function getBannersAction(dispatch,getState)
 {
   return (dispatch)=>{

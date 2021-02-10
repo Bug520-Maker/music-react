@@ -1,12 +1,20 @@
 import React,{memo,useEffect,useState} from 'react';
+import {useDispatch} from "react-redux";
+
 import {Header,BodyList} from './style'
 import {resetImgSize} from "../../utils/data-format";
 
 import {songMsg} from '../../network/recommend/recommend'
 
+import {getSongDetailAction} from "../../views/play-bar/store/actionCreator";
+
 export default memo(function TopListCpn(props){
     const {info}=props;
     const [rankingSongs,setRankingSongs]=useState([]);
+
+    //redux-hook
+    const dispatch=useDispatch();
+    //other-hook
     useEffect(()=>{
         if(info.trackIds!==undefined)
         {
@@ -18,6 +26,9 @@ export default memo(function TopListCpn(props){
             })
         }
     },[info.trackIds])
+    const playMusic=(item)=>{
+        dispatch(getSongDetailAction(item.id));
+    }
     return (
         <div >
             <Header>
@@ -44,9 +55,9 @@ export default memo(function TopListCpn(props){
                                     <span>{index+1}</span>
                                     <div className="song-name text-overflow-single">{item.name}</div>
                                     <div className="control-btn">
-                                        <i className="play"></i>
-                                        <i className="add"></i>
-                                        <i className="subscribe"></i>
+                                        <i className="play" onClick={e=>playMusic(item)}> </i>
+                                        <i className="add"> </i>
+                                        <i className="subscribe"> </i>
                                     </div>
                                 </li>
                             )

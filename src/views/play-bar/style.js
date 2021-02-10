@@ -17,6 +17,23 @@ export const Content=styled.div`
   /*background-color: #0086b3;*/
   margin: 7px auto 0;
   display: flex;
+  .lyric-container{
+    opacity: ${props=>{
+        if(props.isPlay) {
+           return '1'
+        }
+        return '0'
+    }};
+    transform: translateX(-50%);
+    position: fixed;
+    padding: 15px 20px;
+    left: 50%;
+    top: -100%;
+    color: #fff;
+    background-color: rgba(0,0,0,.4);
+    border-radius: 15px;
+    transition: opacity 1s;
+  }
 `
 export const ControlBtn=styled.div.attrs({
 
@@ -48,9 +65,15 @@ export const ControlBtn=styled.div.attrs({
     background-image: url(${playbar});
     background-position: 0 -130px;
   }
+  .prev:hover{
+    background-position: -30px -130px;
+  }
   .next{
     background-image: url(${playbar});
     background-position: 73px -130px;
+  }
+  .next:hover{
+    background-position: -110px -130px;
   }
 `
 export const Progress=styled.div`
@@ -149,30 +172,71 @@ export const RightControl=styled.div`
     width: 25px;
     height: 25px;
   }
+  .collect:hover{
+    background-position: -88px -189px;
+  }
    .share{
      background-position: -114px -163px;
      background-image: url(${playbar});
      width: 25px;
      height: 25px;
-     margin: 0 0 0 10px;
+     margin: 0 0 0 5px;
    }
+  .share:hover{
+    background-position: -114px -189px;
+  }
   .vol{
     background-position: -2px -248px;
     background-image: url(${playbar});
     width: 25px;
     height: 25px;
   }
+  .vol:hover{
+    background-position: -31px -248px;
+  }
   .loop{
-    background-position: -3px -344px;
+    background-position:${props=>{
+        switch(props.queueIndex) {
+            case 0:
+                return '-66px -248px;'
+          case 1:
+              return '-66px -344px'
+          case 2:
+              return '-3px -344px'
+          default:
+        }
+    }} ;
     background-image: url(${playbar});
     width: 25px;
     height: 25px;
     margin: 0 5px;
+  }
+  .loop:hover{
+    background-position: ${props=>{
+        switch(props.queueIndex) {
+          case 2:
+              return "-33px -344px"
+          case 1:
+              return '-93px -344px'
+          case 0:
+              return '-93px -248px'
+          default:
+            return 
+    }}};
   }
   .list{
     background-position: -42px -68px;
     background-image: url(${playbar});
     width: 59px;
     height: 25px;
+    line-height: 25px;
+    margin: 0 10px 0px 0;
+    span{
+      margin: 0 0 0 33px;
+      color:#666666
+    }
+  }
+  .list:hover{
+    background-position: -42px -98px;
   }
 `
