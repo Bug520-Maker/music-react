@@ -21,8 +21,6 @@ export function getNewAlbums(limit)
     url:'/top/album',
     params:{
       limit,
-      area:'ALL',
-      type:'new'
     }
   })
 }

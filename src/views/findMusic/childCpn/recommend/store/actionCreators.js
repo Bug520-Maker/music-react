@@ -12,6 +12,8 @@ import {
   CHANGE_UP_RANKING,
   CHANGE_NEW_RANKING,
   CHANGE_ORIGINAL_RANKING,
+  CHANGE_HOT_RANKING,
+  CHANGE_ALL_RANKING
 } from './constants.js';
 export function changeBanners(res)
 {
@@ -34,6 +36,7 @@ export function changeHotNewAlbums(res)
     newAlbums:res
   }
 }
+
 /*飙升榜*/
 export function changeUpLink(res)
 {
@@ -58,7 +61,22 @@ export function changeOriginalLink(res)
     originalRanking:res
   }
 }
-
+/*热歌榜*/
+export function changeHotLink(res)
+{
+  return {
+    type:CHANGE_HOT_RANKING,
+    hotRanking:res
+  }
+}
+/*所有榜单*/
+export function changeAllRank(res)
+{
+  return {
+    type:CHANGE_ALL_RANKING,
+    allRanking:res
+  }
+}
 export function getBannersAction(dispatch,getState)
 {
   return (dispatch)=>{
@@ -83,8 +101,8 @@ export function getHotNewAlbumAction(limit)
 {
   return dispatch=>{
     getNewAlbums(limit).then(data=>{
-     /* console.log(data);*/
-      dispatch(changeHotNewAlbums(data.albums))
+     // console.log(data.weekData.slice(0,10));
+      dispatch(changeHotNewAlbums(data.weekData))
     })
   }
 }
@@ -94,8 +112,9 @@ export function getTopListAction()
   return dispatch=>{
     getTopList().then(data=>{
       //console.log(data.list);
+      dispatch(changeAllRank(data.list));
       const newTopList=data.list.filter((item,index)=>{
-        return item.name==='飙升榜'||item.name==='新歌榜'||item.name==='原创榜'
+        return item.name==='飙升榜'||item.name==='新歌榜'||item.name==='原创榜'||item.name==='热歌榜'
       })
       for(let item of newTopList)
       {
@@ -115,6 +134,10 @@ export function getTopListAction()
             topListMsg(item.id).then(data=>{
               //console.log(data)
               dispatch(changeOriginalLink(data.playlist))
+            });break;
+          case '热歌榜':
+            topListMsg(item.id).then(data=>{
+              dispatch(changeHotLink(data.playlist))
             });break;
           default:
 

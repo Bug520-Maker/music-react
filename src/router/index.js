@@ -14,6 +14,8 @@ import djRadio from '../views/findMusic/childCpn/djRadio';
 import recArtist from '../views/findMusic/childCpn/artist';
 import newAlbum from '../views/findMusic/childCpn/newAlbum';
 import playPage from '../views/play-bar/play-page/index';
+
+import RankContent from '../views/findMusic/childCpn/rank/childCpn/rankContent/index'
 const routes =[
 {
   path:'/',
@@ -39,7 +41,13 @@ const routes =[
     },
     {
       path:'/findMusic/rank',
-      component:rank
+      component:rank,
+      routes:[
+        {
+          path:'/findMusic/rank/toplist',
+          component:RankContent
+        }
+      ]
     },
     {
       path:'/findMusic/playList',
