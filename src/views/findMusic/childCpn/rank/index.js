@@ -1,4 +1,4 @@
-import React, {memo,useState} from "react";
+import React, {memo,useState,useEffect} from "react";
 import {useSelector} from "react-redux";
 //组件
 import RankItem from '../../../../components/rank-item/index';
@@ -20,9 +20,10 @@ import {renderRoutes} from "react-router-config";
 			allRanking:state.getIn(['recommendReducer','allRanking']),
 		}
 	})
+	 //other hook
 	 //function handle
 	 const liClick=(item,index)=>{
- 		setCurrentIndex(index);
+		 setCurrentIndex(index);
  		props.history.push({
 			pathname:'/findMusic/rank/toplist',
 			state:{

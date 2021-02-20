@@ -101,8 +101,11 @@ export function getHotNewAlbumAction(limit)
 {
   return dispatch=>{
     getNewAlbums(limit).then(data=>{
-     // console.log(data.weekData.slice(0,10));
-      dispatch(changeHotNewAlbums(data.weekData))
+      //console.log(data);
+      if(data)
+      {
+        dispatch(changeHotNewAlbums(data.weekData))
+      }
     })
   }
 }

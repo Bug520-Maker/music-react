@@ -15,12 +15,16 @@ export function getHotRecommends(limit)
     }
   })
 }
+//新碟上架
 export function getNewAlbums(limit)
 {
   return request({
     url:'/top/album',
     params:{
       limit,
+      offset:0,
+      type:'hot',
+      area:'ALL'
     }
   })
 }

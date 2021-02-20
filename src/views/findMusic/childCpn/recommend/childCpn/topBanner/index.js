@@ -1,7 +1,8 @@
 import React,{memo,useEffect,useRef,useCallback,useState} from 'react';
-import { Carousel } from 'antd';
-import {CenterBanner,LeftBanner,RightBanner,Bgc} from "./style";
 import {shallowEqual, useDispatch, useSelector} from "react-redux";
+import { Carousel,Image} from 'antd';
+
+import {CenterBanner,LeftBanner,RightBanner,Bgc} from "./style";
 import {getBannersAction} from "../../store/actionCreators";
 
 export default memo(function TopBanner()
@@ -29,9 +30,10 @@ export default memo(function TopBanner()
                     <Carousel effect="fade" autoplay ref={swiper} beforeChange={changeBgc}>
                         {
                             banners.map((item,index)=>{
-                                return(<div key={item.imageUrl}>
-                                        <img src={item.imageUrl} alt={item.typeTitle}/>
-                                       </div>)
+                                return(
+                                    <div key={item.imageUrl}>
+                                        <img src={`${item.imageUrl}?param=730y285`} alt={item.typeTitle}/>
+                                    </div>)
                             })
                         }
                     </Carousel>

@@ -11,13 +11,13 @@ export const CenterBanner=styled.div`
   width:984px;
   height:285px;
   margin: 0 auto;
-  background: red;
+  background: #cac6ba;
   display: flex;
   position: relative;
 `
 export const LeftBanner=styled.div`
   width:730px;
-  background: #f98eaf; 
+  background: #cac6ba; 
   height: 100%;
   img{
     width:730px;
