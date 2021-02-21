@@ -1,0 +1,1 @@
+export const DJ_CATE='jdCate'

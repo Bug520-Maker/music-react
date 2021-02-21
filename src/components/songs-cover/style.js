@@ -57,4 +57,9 @@ export const HotRec=styled.div`
     font:14px Arial,Helvetica,sans-serif;
     margin: 10px 0 0 0;
   }
+  .creator{
+    color: #666666;
+    margin: 5px 0 0 0;
+    font-size: 12px;
+  }
 `

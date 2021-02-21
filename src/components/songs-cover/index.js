@@ -9,7 +9,7 @@ export default memo(function SongsCover(props){
     return (
         <HotRec>
             <div className="img-container">
-                <img src={resetImgSize(playList.picUrl,140)} alt="暂无图片"/>
+                <img src={resetImgSize(playList.picUrl||playList.coverImgUrl,140)} alt="暂无图片"/>
                 <div className="cover"> </div>
                 <div className="play">
                     <i className="headset"> </i>
@@ -20,7 +20,14 @@ export default memo(function SongsCover(props){
             <div className="state text-overflow-single">
                 {playList.name}
             </div>
-            <div className="creator"> </div>
+            {
+                playList.creator&&<div className="creator">
+                    by&nbsp;
+                    {
+                        playList.creator&&playList.creator.nickname
+                    }
+                </div>
+            }
         </HotRec>
     )
 })
