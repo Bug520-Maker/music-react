@@ -11,9 +11,13 @@ export const NavMenu=styled.div`
         div{
           font-size:12px;
           color:#ffffff;
-          background-color:#9b0909;
           padding:1px 12px;
           border-radius:12px;
+        }
+        &.active{
+          div{
+            background-color:#9b0909;
+          }
         }
       }
    }

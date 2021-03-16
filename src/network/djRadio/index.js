@@ -23,3 +23,13 @@ export function programRank()
         }
     })
 }
+/*获取分类推荐*/
+export function cateRecommend(type)
+{
+    return request({
+        url:'/dj/recommend/type',
+        params:{
+            type
+        }
+    })
+}

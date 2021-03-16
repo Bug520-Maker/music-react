@@ -1,4 +1,4 @@
-import React,{memo} from 'react';
+import React,{memo,Suspense} from 'react';
 
 import 'antd/dist/antd.css';
 
@@ -17,7 +17,10 @@ const app=memo(function()
     <Provider store={store}>
       <BrowserRouter>
         <GBAppHeader/>
-        {renderRoutes(routes)}
+          <Suspense fallback={<div>loading..</div>}>
+              {renderRoutes(routes)}
+          </Suspense>
+
         <GBAppFooter/>
         <PlayPage/>
       </BrowserRouter>

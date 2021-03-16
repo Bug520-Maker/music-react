@@ -60,13 +60,16 @@ export function getSongDetailAction(ids)
         }
         else{
             getSongDetail(ids).then(data=>{
-                const song=data.songs[0];
-                dispatch(changeCurrentSong(song));
-                const newPlayList=[...playList];
-                newPlayList.push(song);
-                dispatch(changePlayList(newPlayList));
-                dispatch(changeCurrentSongIndex(newPlayList.length-1));
-                dispatch(getLyricAction(ids));
+                if(data)
+                {
+                    const song=data.songs[0];
+                    dispatch(changeCurrentSong(song));
+                    const newPlayList=[...playList];
+                    newPlayList.push(song);
+                    dispatch(changePlayList(newPlayList));
+                    dispatch(changeCurrentSongIndex(newPlayList.length-1));
+                    dispatch(getLyricAction(ids));
+                }
             })
         }
 
@@ -116,8 +119,11 @@ export function changeCurrentSongAction(tag)
 export function getLyricAction(id){
     return (dispatch)=>{
         getLyric(id).then(data=>{
-            const formatLyric=getFormatLyric(data.lrc.lyric)
-            dispatch(changeLyric(formatLyric))
+            if(data)
+            {
+                const formatLyric=getFormatLyric(data.lrc.lyric)
+                dispatch(changeLyric(formatLyric))
+            }
         })
     }
 }

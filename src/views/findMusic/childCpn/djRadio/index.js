@@ -11,13 +11,16 @@ import {
 //组件
 import RecTheme from "../../../../components/recommend-theme";
 import Programmer from "../../../../components/program/index";
+import DjRadioCate from '../../../../components/djRadio-cate';
+import {cateRecommend} from "../../../../network/djRadio";
 export default memo(function DJRadio() {
 	//redux hook
 	const dispatch=useDispatch();
-	const {djCate,recProgram,programRank}=useSelector(state=>({
+	const {djCate,recProgram,programRank,cateRecommend}=useSelector(state=>({
 		djCate:state.getIn(['djRadioReducer','djcate']),
 		recProgram:state.getIn(['djRadioReducer','recProgram']),
-		programRank:state.getIn(['djRadioReducer','programRank'])
+		programRank:state.getIn(['djRadioReducer','programRank']),
+		cateRecommend:state.getIn(['djRadioReducer','cateRecommend'])
 	}))
 	//other hook
 	//电台分类
@@ -34,7 +37,6 @@ export default memo(function DJRadio() {
 	},[dispatch])
 	const programs=recProgram||[];
 	const toplist=programRank||[];
-	//console.log(programs)
 	return (
 		<DjRadioWrapper className="clearfix">
 			<div className="dj-cate">
@@ -80,6 +82,17 @@ export default memo(function DJRadio() {
 					}
 				</ProgramRank>
 			</Recommend>
+			<ul>
+				{
+					cateRecommend.length!==0&&cateRecommend.map((item,index)=>{
+						return (
+							<li key={index}>
+								<DjRadioCate info={item.djRadios} title={item.djRadios[0].category}/>
+							</li>
+						)
+					})
+				}
+			</ul>
 		</DjRadioWrapper>
 	)
 })

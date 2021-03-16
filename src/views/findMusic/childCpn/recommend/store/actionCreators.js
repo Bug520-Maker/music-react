@@ -13,7 +13,7 @@ import {
   CHANGE_NEW_RANKING,
   CHANGE_ORIGINAL_RANKING,
   CHANGE_HOT_RANKING,
-  CHANGE_ALL_RANKING
+  CHANGE_ALL_RANKING,
 } from './constants.js';
 export function changeBanners(res)
 {

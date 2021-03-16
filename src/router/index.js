@@ -1,6 +1,21 @@
 import {Redirect} from "react-router";
+import {lazy} from 'react'
+const findMusic=lazy(()=>import('@/views/findMusic'))
+const myMusic=lazy(()=>import('@/views/myMusic'))
+const friend=lazy(()=>import('@/views/friend'))
+const market=lazy(()=>import('@/views/market'))
+const artist=lazy(()=>import('@/views/artist'))
+const downloadClient=lazy(()=>import('@/views/downloadClient'))
+const recommend=lazy(()=>import('../views/findMusic/childCpn/recommend/index.js'))
+const rank=lazy(()=>import('../views/findMusic/childCpn/rank'))
+const playList=lazy(()=>import('../views/findMusic/childCpn/playList'))
+const djRadio=lazy(()=>import('../views/findMusic/childCpn/djRadio'))
+const recArtist=lazy(()=>import('../views/findMusic/childCpn/artist'))
+const newAlbum=lazy(()=>import('../views/findMusic/childCpn/newAlbum'))
+const playPage=lazy(()=>import('../views/play-bar/play-page/index'))
+const RankContent=lazy(()=>import('../views/findMusic/childCpn/rank/childCpn/rankContent/index'))
 
-import findMusic from "@/views/findMusic";
+/*import findMusic from "@/views/findMusic";
 import myMusic from "@/views/myMusic";
 import friend from "@/views/friend";
 import market from "@/views/market";
@@ -15,7 +30,7 @@ import recArtist from '../views/findMusic/childCpn/artist';
 import newAlbum from '../views/findMusic/childCpn/newAlbum';
 import playPage from '../views/play-bar/play-page/index';
 
-import RankContent from '../views/findMusic/childCpn/rank/childCpn/rankContent/index'
+import RankContent from '../views/findMusic/childCpn/rank/childCpn/rankContent/index'*/
 const routes =[
 {
   path:'/',

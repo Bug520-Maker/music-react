@@ -1,18 +1,27 @@
 import {
     djRadioCate,
     recProgram,
-    programRank
+    programRank,
+    cateRecommend
 } from '../../../../../network/djRadio/index';
 import{
     DJ_CATE,
     REC_PROGRAM,
-    PROGRAM_RANK
+    PROGRAM_RANK,
+    CHANGE_CATE_RECOMMEND
 } from './constants'
 function changeDjCate(res)
 {
     return {
         type:DJ_CATE,
         djcate:res
+    }
+}
+function changeCateRecommend(res)
+{
+    return {
+        type:CHANGE_CATE_RECOMMEND,
+        cateRecommend:res
     }
 }
 function changeRecProgram(res)
@@ -34,6 +43,13 @@ export function getDjRadioCateAction()
     return dispatch=>{
         djRadioCate().then(data=>{
             dispatch(changeDjCate(data.categories))
+            const promise=data.categories.map((item,index)=>{
+                return cateRecommend(item.id)
+            })
+            /*获取推荐分类*/
+            Promise.all(promise).then(data=>{
+                dispatch(changeCateRecommend(data));
+            })
         })
     }
 }

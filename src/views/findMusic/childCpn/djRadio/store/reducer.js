@@ -2,14 +2,17 @@ import {Map} from 'immutable';
 import{
     DJ_CATE,
     REC_PROGRAM,
-    PROGRAM_RANK
+    PROGRAM_RANK,
+    CHANGE_CATE_RECOMMEND
 } from './constants'
 const defaultState=Map({
     djcate:[],//电台分类
     recProgram:[],//推荐节目
-    programRank:[]
+    programRank:[],
+    //获取电台分类推荐
+    cateRecommend:[]
 })
-export default function(state=defaultState,action)
+function reducer(state=defaultState,action)
 {
     switch(action.type)
     {
@@ -18,8 +21,11 @@ export default function(state=defaultState,action)
         case REC_PROGRAM:
             return state.set('recProgram',action.recProgram);
         case PROGRAM_RANK:
-            return state.set('programRank',action.programRank)
+            return state.set('programRank',action.programRank);
+        case CHANGE_CATE_RECOMMEND:
+            return state.set('cateRecommend',action.cateRecommend);
         default:
             return state
     }
 }
+export default reducer;
