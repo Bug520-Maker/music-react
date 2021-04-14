@@ -4,6 +4,7 @@ export const Content=styled.div`
   border: 1px solid #d3d3d3;
   height: 1365px;
   margin: 0 auto;
+  display: flex;
 `
 export const LeftContent=styled.div`
   width: 729px;

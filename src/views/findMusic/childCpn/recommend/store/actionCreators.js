@@ -5,6 +5,7 @@ import {
   getTopList,
   topListMsg
 } from '../../../../../network/recommend/recommend.js';
+import {getSettleArtist} from "../../../../../network/recommend/recommend.js";
 import {
   CHANGE_BANNERS,
   CHANGE_HOT_RECOMMENDS,
@@ -14,6 +15,7 @@ import {
   CHANGE_ORIGINAL_RANKING,
   CHANGE_HOT_RANKING,
   CHANGE_ALL_RANKING,
+  CHANGE_SETTLE_ARTIST
 } from './constants.js';
 export function changeBanners(res)
 {
@@ -75,6 +77,14 @@ export function changeAllRank(res)
   return {
     type:CHANGE_ALL_RANKING,
     allRanking:res
+  }
+}
+/*获取入驻歌手*/
+function changeSettleArtist(res)
+{
+  return {
+    type:CHANGE_SETTLE_ARTIST,
+    settleArtist:res
   }
 }
 export function getBannersAction(dispatch,getState)
@@ -159,3 +169,16 @@ export function getSongMsgAction(id)
     })
   }
 }*/
+//获取入驻歌手
+export function getSettleArtistAction(offset,limit)
+{
+  return dispatch=>{
+    getSettleArtist(0,5).then(data=>{
+      console.log(data);
+      if(data)
+      {
+        dispatch(changeSettleArtist(data.artists))
+      }
+    })
+  }
+}

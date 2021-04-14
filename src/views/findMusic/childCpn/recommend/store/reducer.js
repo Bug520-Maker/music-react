@@ -8,7 +8,8 @@ import {
   CHANGE_ORIGINAL_RANKING,
   CHANGE_HOT_RANKING,
   CHANGE_ALL_RANKING,
-  CHANGE_CATE_RECOMMEND
+  CHANGE_CATE_RECOMMEND,
+  CHANGE_SETTLE_ARTIST
 } from './constants.js';
 
 const defaultBanners=Map({
@@ -20,6 +21,7 @@ const defaultBanners=Map({
   originalRanking:{},
   hotRanking:{},
   allRanking:{},
+  settleArtist:[]
 })
 function reducer(state=defaultBanners,action)
 {
@@ -41,6 +43,8 @@ function reducer(state=defaultBanners,action)
       return state.set('hotRanking',action.hotRanking);
     case CHANGE_ALL_RANKING:
       return state.set('allRanking',action.allRanking);
+    case CHANGE_SETTLE_ARTIST:
+      return state.set('settleArtist',action.settleArtist)
     default:
       return state
   }

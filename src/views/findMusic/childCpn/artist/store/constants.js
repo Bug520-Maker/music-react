@@ -1,0 +1,1 @@
+export const CHANGE_ARTIST_CATE="changeArtistCate";

@@ -56,3 +56,14 @@ export function songMsg(id)
     }
   })
 }
+/*获取入驻歌手（热门歌手）*/
+export function getSettleArtist(offset=0,limit=10)
+{
+  return request({
+    url:'/top/artists',
+    params:{
+      offset,
+      limit
+    }
+  })
+}

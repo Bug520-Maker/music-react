@@ -11,4 +11,6 @@ export const CHANGE_ORIGINAL_RANKING='changeOriginalRanking';
 export const CHANGE_HOT_RANKING='changeHotRanking';
 /*所有榜单*/
 export const CHANGE_ALL_RANKING='changeAllRanking';
+//获取入驻歌手
+export const CHANGE_SETTLE_ARTIST='changeSettleArtist';
 
