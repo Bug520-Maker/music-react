@@ -67,3 +67,13 @@ export function getSettleArtist(offset=0,limit=10)
     }
   })
 }
+//热门主播
+export function getHotDjRadio(limit=5)
+{
+  return request({
+    url:'/dj/toplist/popular',
+    params:{
+      limit
+    }
+  })
+}

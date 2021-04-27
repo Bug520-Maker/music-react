@@ -174,7 +174,7 @@ export function getSettleArtistAction(offset,limit)
 {
   return dispatch=>{
     getSettleArtist(0,5).then(data=>{
-      console.log(data);
+      //console.log(data);
       if(data)
       {
         dispatch(changeSettleArtist(data.artists))

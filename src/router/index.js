@@ -14,23 +14,7 @@ const recArtist=lazy(()=>import('../views/findMusic/childCpn/artist'))
 const newAlbum=lazy(()=>import('../views/findMusic/childCpn/newAlbum'))
 const playPage=lazy(()=>import('../views/play-bar/play-page/index'))
 const RankContent=lazy(()=>import('../views/findMusic/childCpn/rank/childCpn/rankContent/index'))
-
-/*import findMusic from "@/views/findMusic";
-import myMusic from "@/views/myMusic";
-import friend from "@/views/friend";
-import market from "@/views/market";
-import artist from "@/views/artist";
-import downloadClient from "@/views/downloadClient";
-
-import recommend from "../views/findMusic/childCpn/recommend/index.js";
-import rank from "../views/findMusic/childCpn/rank";
-import playList from '../views/findMusic/childCpn/playList';
-import djRadio from '../views/findMusic/childCpn/djRadio';
-import recArtist from '../views/findMusic/childCpn/artist';
-import newAlbum from '../views/findMusic/childCpn/newAlbum';
-import playPage from '../views/play-bar/play-page/index';
-
-import RankContent from '../views/findMusic/childCpn/rank/childCpn/rankContent/index'*/
+const playListDetail=lazy(()=>import("../components/content/playListDetail/index"));
 const routes =[
 {
   path:'/',
@@ -83,6 +67,10 @@ const routes =[
     {
       path:'/findMusic/player',
       component:playPage
+    },
+    {
+      path:'/findMusic/playListDetail',
+      component:playListDetail
     }
   ]
 },
